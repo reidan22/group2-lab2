@@ -1,0 +1,4 @@
+*.pyc
+*.pyo
+__pycache__/
+members_functions/__pycache__/
