@@ -1,2 +1,10 @@
-# group2-lab2
-Repository of Group 2 for the Lab 2 Acitivity 
+# Eskwelabs - Cohort 7 - Sprint 1 - Group 2 - Activity 2
+---
+### Mentor
+Sasa
+### Team Members
+ - Bevs
+ - Eunice
+ - Shawn
+ - Renzo
+ - Dan
