@@ -1,4 +1,6 @@
-# Eskwelabs - Cohort 7 - Sprint 1 - Group 2 - Activity 2
+# Eskwelabs
+## Cohort 7 - Sprint 1
+### Group 2 - Activity 2
 ---
 ### Mentor
 - Sasa
