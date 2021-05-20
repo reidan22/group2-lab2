@@ -21,4 +21,4 @@ assigned to you found in **./members_functions**. Thanks!
 
  - Try running  `streamlit run main.py` to see the base skeleton of our streamlit application
 
- - To check and run the streamlit application assigned to you, run the command `streamlit run f_**[your name]**.py`
+ - To check and run the streamlit application assigned to you, run the command `streamlit run f_[your name].py`
