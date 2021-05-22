@@ -6,8 +6,8 @@ import streamlit as st
 
 def mainShawn():
     testShawn()
-    #--- Put functions here to call it. ---#
-    sampleStreamLit()
+    sl.image("Methodology.png")
+    #sampleStreamLit()
 
 
 def sampleStreamLit():
