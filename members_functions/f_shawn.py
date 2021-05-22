@@ -6,7 +6,7 @@ import streamlit as st
 
 def mainShawn():
     testShawn()
-    st.image("Methodology.png")
+    st.image("./assets/Methodology.png")
     #sampleStreamLit()
 
 

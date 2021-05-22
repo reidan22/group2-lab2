@@ -31,3 +31,5 @@ assigned to you found in **./members_functions**. Thanks!
     - `git status` -> run this command again to confirm added files to stage. Its color will turn **green** if succesfully added. It's *red* if the file has been modified but hasn't been added
     - `git commit -m "[message]"` -> Always put a commit message. It helps in sorting out and controlling versions of a project
     - `git push [GitHub Repository]` -> Finally, call the push command to transfer all the modified files you added and commited in your git environment for the project to the repo.
+
+- Add .csv files and image files in the **./assets** folder.
