@@ -82,7 +82,7 @@ def mainEunice():
     plt.figure(figsize=(12,10))
     sns.set_theme()
     ax = sns.heatmap(df_corr.corr(), annot=True, fmt='.2f',)
-    plt.show()
+    
     
     # prepare data for kmeans
     df_ratio_ss = df_corr[['Enrolment', ' school.mooe ', 'rooms_total',
@@ -206,7 +206,6 @@ def mainEunice():
     ax3. set_ylim(0, 0.4)
     plt.xticks(rotation=45)
     fig2.suptitle('Distribution of Cluster according to City Income', fontsize=16)
-    plt.show()
     
     #plot to streamlit
     st.pyplot(fig2)
