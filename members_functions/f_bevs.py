@@ -16,27 +16,27 @@ def mainBevs():
     pd.set_option('display.max_rows', 100)
 
     #Loading and compiling dataset
-    df_schools = pd.read_csv("Masterlist of Schools.csv", index_col="school.id")
+    df_schools = pd.read_csv("./assets/Masterlist of Schools.csv", index_col="school.id")
 
-    df_location = pd.read_csv("Schools Location Data.csv", 
+    df_location = pd.read_csv("./assets/Schools Location Data.csv", 
                           encoding = "latin-1", 
                           index_col="School ID",
                           usecols=["School ID", "Enrolment", "Latitude", "Longitude"])
 
-    df_rooms = pd.read_csv('Rooms data.csv', index_col="School ID")
+    df_rooms = pd.read_csv('./assets/Rooms data.csv', index_col="School ID")
 
-    df_teachers = pd.read_csv("Teachers data.csv", index_col="school.id")
+    df_teachers = pd.read_csv("./assets/Teachers data.csv", index_col="school.id")
 
-    df_elementary = pd.read_csv("Enrollment Master Data_2015_E.csv")[:-1].astype(int).set_index("School ID")
+    df_elementary = pd.read_csv("./assets/Enrollment Master Data_2015_E.csv")[:-1].astype(int).set_index("School ID")
 
-    df_secondary = (pd.read_csv('Enrollment Master Data_2015_S.csv')[:-1]
+    df_secondary = (pd.read_csv('./assets/Enrollment Master Data_2015_S.csv')[:-1]
                   .replace(",", "", regex=True)
                   .astype(int)
                   .replace("SPED NG Male", "SPED NG Male SS")
                   .replace("SPED NG Female", "SPED NG Female SS")
                   .set_index("School ID"))
 
-    df_mooe = (pd.read_csv('MOOE data.csv', index_col="school.id", usecols=["school.id", " school.mooe "])
+    df_mooe = (pd.read_csv('./assets/MOOE data.csv', index_col="school.id", usecols=["school.id", " school.mooe "])
              .replace(",", "", regex=True).astype(float))
 
     #Saving all datasets into one data frame
