@@ -171,6 +171,7 @@ def mainEunice():
     st.pyplot(fig)
     
     # prepare df for multiple bar graphs
+    df_outlier_removed['Cluster_Labels'] = df_ratio_ss['Cluster_Labels']
     df_outlier_removed.groupby(['Cluster_Labels', 'school.cityincome']).size()
     income = ['Below P 15 M', 'P 15 M or more but less than P 25 M', 'P 25 M or more but less than P 35 M', 
              'P 35 M or more but less than P 45 M', 'P 45 M or more but less than P 55 M', 
