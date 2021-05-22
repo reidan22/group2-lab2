@@ -7,6 +7,7 @@ def main():
 def group_2():
     mainRenzo()
     mainShawn()
+    mainDan()
     mainBevs()
     mainEunice()
 
