@@ -165,12 +165,22 @@ def mainEunice():
 
     for row in range(0, len(df_clusters.index)):
         make_spider(row=row, 
-                    title='Segment '+(df_clusters['Cluster_Labels'][row]).astype(str), 
+                    title='Cluster '+(df_clusters['Cluster_Labels'][row]).astype(str), 
                     color=my_palette(row))
+    
+    
+    #add title
+    st.title('Clusters formed after K-Means Clustering')
     #plot to streamlit
     st.pyplot(fig)
+    st.text("""Three clusters have similar shape, but different magnitude.
+Cluster 0 – lowest resources allocated
+Cluster 1 – quantity of resources in between the two clusters
+Cluster 2 – highest resources allocated
+""")
     
     # prepare df for multiple bar graphs
+    df_outlier_removed['Cluster_Labels'] = df_ratio_ss['Cluster_Labels']
     df_outlier_removed.groupby(['Cluster_Labels', 'school.cityincome']).size()
     income = ['Below P 15 M', 'P 15 M or more but less than P 25 M', 'P 25 M or more but less than P 35 M', 
              'P 35 M or more but less than P 45 M', 'P 45 M or more but less than P 55 M', 
@@ -208,10 +218,17 @@ def mainEunice():
     fig2.suptitle('Distribution of Cluster according to City Income', fontsize=16)
     
     #plot to streamlit
+    st.title("Distribution of Cluster according to City Income")
     st.pyplot(fig2)
-    
-    sampleStreamLit()
+    st.text(""" For all clusters
+The highest proportion of schools belongs to the P45-55 M income class
+The proportion of schools in lower income municipalities are greater compared to higher income municipalities
 
+""")
+    
+    st.text(""" Proportion of schools in lower income municipalities slightly decreases from Cluster 0 to Cluster 2
+ """)
+    st.text(""" Proportion of schools in higher income municipalities slightly increases from Cluster 0 to Cluster 2""")
 
 def sampleStreamLit():
     st.title("This is Eunice's Streamlit page")

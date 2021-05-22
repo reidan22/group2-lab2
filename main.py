@@ -15,6 +15,7 @@ def streamlit_main():
 
     elif my_page == "Methodology":
         st.title("Methodology")
+        mainEunice()
 
     elif my_page == "Data Presentation":
         st.title("Data Presentation")
