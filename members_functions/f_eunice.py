@@ -232,7 +232,7 @@ The proportion of schools in lower income municipalities are greater compared to
     
     st.text(""" Proportion of schools in higher income municipalities slightly increases from Cluster 0 to Cluster 2
 """)
-    sampleStreamLit()
+    #sampleStreamLit()
 
 
 def sampleStreamLit():
