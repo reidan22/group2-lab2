@@ -16,27 +16,27 @@ def mainEunice():
     pd.set_option('display.max_rows', 100)
     
     # Load data
-    df_schools = pd.read_csv("Masterlist of Schools.csv", index_col="school.id")
+    df_schools = pd.read_csv("./assets/Masterlist of Schools.csv", index_col="school.id")
 
-    df_location = pd.read_csv("Schools Location Data.csv", 
+    df_location = pd.read_csv("./assets/Schools Location Data.csv", 
                               encoding = "latin-1", 
                               index_col="School ID",
                               usecols=["School ID", "Enrolment", "Latitude", "Longitude"])
 
-    df_rooms = pd.read_csv('Rooms data.csv', index_col="School ID")
+    df_rooms = pd.read_csv('./assets/Rooms data.csv', index_col="School ID")
 
-    df_teachers = pd.read_csv("Teachers data.csv", index_col="school.id")
+    df_teachers = pd.read_csv("./assets/Teachers data.csv", index_col="school.id")
 
-    df_elementary = pd.read_csv("Enrollment Master Data_2015_E.csv")[:-1].astype(int).set_index("School ID")
+    df_elementary = pd.read_csv("./assets/Enrollment Master Data_2015_E.csv")[:-1].astype(int).set_index("School ID")
 
-    df_secondary = (pd.read_csv('Enrollment Master Data_2015_S.csv')[:-1]
+    df_secondary = (pd.read_csv('./assets/Enrollment Master Data_2015_S.csv')[:-1]
                       .replace(",", "", regex=True)
                       .astype(int)
                       .replace("SPED NG Male", "SPED NG Male SS")
                       .replace("SPED NG Female", "SPED NG Female SS")
                       .set_index("School ID"))
 
-    df_mooe = (pd.read_csv('MOOE data.csv', index_col="school.id", usecols=["school.id", " school.mooe "])
+    df_mooe = (pd.read_csv('./assets/MOOE data.csv', index_col="school.id", usecols=["school.id", " school.mooe "])
                  .replace(",", "", regex=True).astype(float))
     
     #combine all into one dataframe
@@ -157,7 +157,7 @@ def mainEunice():
         
     #show spider graph
     my_dpi=100
-    plt.figure(figsize=(1000/my_dpi, 1000/my_dpi), dpi=my_dpi)
+    fig = plt.figure(figsize=(1000/my_dpi, 1000/my_dpi), dpi=my_dpi)
     plt.subplots_adjust(hspace=0.5)
 
     # Create a color palette:
@@ -167,7 +167,10 @@ def mainEunice():
         make_spider(row=row, 
                     title='Segment '+(df_clusters['Cluster_Labels'][row]).astype(str), 
                     color=my_palette(row))
+    #plot to streamlit
+    st.pyplot(fig)
     
+    # prepare df for multiple bar graphs
     df_outlier_removed.groupby(['Cluster_Labels', 'school.cityincome']).size()
     income = ['Below P 15 M', 'P 15 M or more but less than P 25 M', 'P 25 M or more but less than P 35 M', 
              'P 35 M or more but less than P 45 M', 'P 45 M or more but less than P 55 M', 
@@ -188,7 +191,7 @@ def mainEunice():
     two['proportion'] = two['school.cityincome']/two['school.cityincome'].sum()
     
     #plot multiple bar graphs per city income and clusters
-    fig, (ax1, ax2, ax3) = plt.subplots(nrows=3, ncols=1, figsize=(12,10),  constrained_layout=True, sharex=True)
+    fig2, (ax1, ax2, ax3) = plt.subplots(nrows=3, ncols=1, figsize=(12,10),  constrained_layout=True, sharex=True)
     ax1.bar(zero['index'], zero['proportion'])
     ax1.set_title('Cluster 0', fontsize=14)
     ax1.set_ylabel('proportion, n=23959', fontsize=14)
@@ -202,9 +205,11 @@ def mainEunice():
     ax2. set_ylim(0, 0.4)
     ax3. set_ylim(0, 0.4)
     plt.xticks(rotation=45)
-    fig.suptitle('Distribution of Cluster according to City Income', fontsize=16)
+    fig2.suptitle('Distribution of Cluster according to City Income', fontsize=16)
     plt.show()
     
+    #plot to streamlit
+    st.pyplot(fig2)
     
     sampleStreamLit()
 
