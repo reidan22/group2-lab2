@@ -162,10 +162,8 @@ def mainBevs():
 def sampleStreamLit():
     st.title("An Exploratory Analysis of Public School Resources According to City Income Level")
     st.header("Sample header")
-    st.text('Schools with the most no. of students and the most no. of resources (rooms, teachers, and MOOE) are located in cities with an income level of 55M or more but less than P80 M.
-    ')
-    st.text('Schools with the least no. of students and the least no. of resources (rooms, teachers, and MOOE) are located in cities with an income level of P 80M or more but less than P 160 M.
-    ')
+    st.text("Schools with the most no. of students and the most no. of resources (rooms, teachers, and MOOE) are located in cities with an income level of 55M or more but less than P80 M.")
+    st.text("Schools with the least no. of students and the least no. of resources (rooms, teachers, and MOOE) are located in cities with an income level of P 80M or more but less than P 160 M.")
 
 
 
