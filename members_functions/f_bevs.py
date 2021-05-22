@@ -1,7 +1,10 @@
 ################################################
 ##----------- Import packages here -----------##
 import streamlit as st
-
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 ################################################
 
 def mainBevs():
@@ -9,10 +12,6 @@ def mainBevs():
     #--- Put functions here to call it. ---#
     sampleStreamLit()
 
-    import pandas as pd
-    import numpy as np
-    import matplotlib.pyplot as plt
-    import seaborn as sns
     pd.set_option('display.max_columns', 100)
     pd.set_option('display.max_rows', 100)
 
