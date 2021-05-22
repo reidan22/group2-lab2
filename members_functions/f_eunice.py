@@ -228,12 +228,7 @@ The proportion of schools in lower income municipalities are greater compared to
     
     st.text(""" Proportion of schools in lower income municipalities slightly decreases from Cluster 0 to Cluster 2
  """)
-    
-    
-    st.text(""" Proportion of schools in higher income municipalities slightly increases from Cluster 0 to Cluster 2
-""")
-    #sampleStreamLit()
-
+    st.text(""" Proportion of schools in higher income municipalities slightly increases from Cluster 0 to Cluster 2""")
 
 def sampleStreamLit():
     st.title("This is Eunice's Streamlit page")

@@ -19,5 +19,5 @@ def testConnection():
     testDan()
     testRenzo()
     testBevs()
-    testEunice()
+    # testEunice()
     testShawn()
