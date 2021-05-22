@@ -10,11 +10,10 @@ import seaborn as sns
 def mainBevs():
     testBevs()
     #--- Put functions here to call it. ---#
-    sampleStreamLit()
+    # st.markdown("<h1 style='text-align: center; color: red;'>Some title</h1>", unsafe_allow_html=True)
 
     pd.set_option('display.max_columns', 100)
     pd.set_option('display.max_rows', 100)
-
     #Loading and compiling dataset
     df_schools = pd.read_csv("./assets/Masterlist of Schools.csv", index_col="school.id")
 
@@ -22,7 +21,6 @@ def mainBevs():
                           encoding = "latin-1", 
                           index_col="School ID",
                           usecols=["School ID", "Enrolment", "Latitude", "Longitude"])
-
     df_rooms = pd.read_csv('./assets/Rooms data.csv', index_col="School ID")
 
     df_teachers = pd.read_csv("./assets/Teachers data.csv", index_col="school.id")
@@ -41,16 +39,15 @@ def mainBevs():
 
     #Saving all datasets into one data frame
     df_all = pd.concat([df_schools, df_location, df_rooms, df_teachers, df_elementary, df_secondary, df_mooe], axis=1)
-    df_all
 
     #Checking the shape
-    df_all.shape
+    # df_all.shape
 
     #Checking for missing values
-    df_all.isna().sum()
+    # df_all.isna().sum()
 
     #Checking for duplicates
-    df_all[df_all.index.duplicated(keep=False)]
+    # df_all[df_all.index.duplicated(keep=False)]
 
     # Obtain all numeric features and school.classification
     df_numeric = df_all[['school.region', 'school.cityincome','rooms.standard.academic', 'rooms.standard.unused',
@@ -82,11 +79,9 @@ def mainBevs():
 
     df_outlier_removed = (df_numeric[(df_numeric[' school.mooe '] >= Q1 - 1.5*IQR) & 
                            (df_numeric[' school.mooe '] <= Q3 + 1.5*IQR)])
-    df_outlier_removed.columns
 
     #Checking the dataset
     df_numeric ["school.cityincome"] = df_numeric["school.cityincome"].replace(['P 55 M or more'],'P 55 M or more but less than P 80 M')
-    df_numeric
 
     #reordering categories
     df_numeric["school.cityincome"] = df_numeric["school.cityincome"].astype('category')
@@ -104,59 +99,59 @@ def mainBevs():
 
     #Getting the no. of students per city classified by income
     students_per_city_income = df_numeric.groupby("school.cityincome").agg(Enrolment=("Enrolment", sum))
-    students_per_city_income
 
     #Plotting the bar graph for students per city classified by income
     plt.figure(figsize=(12,6), dpi = 80)
     plt.barh(students_per_city_income.index, students_per_city_income["Enrolment"].values)
     plt.title("Students")
     plt.ticklabel_format(axis="x", style="plain")
-    plt.show
 
     # display graph
-    st.pyplot(fig)
-
+    st.pyplot(plt)
+    st.write("Schools with the most no. of students are located in cities with an income level of 55M or more but less than P80 M.")
+    st.write("Schools with the lowest no. of students are located in cities with an income level of P 80M or more but less than P 160 M.")
     #Getting the no. of teachers per city classified by income
     teachers_per_city_income = df_numeric.groupby("school.cityincome").agg(Teachers=("teachers_total", sum))
-    teachers_per_city_income
 
     #Plotting the bar graph for teachers per city classified by income
     plt.figure(figsize=(12,6), dpi = 80)
     plt.barh(teachers_per_city_income.index, teachers_per_city_income["Teachers"].values)
     plt.title("Teachers")
     plt.ticklabel_format(axis="x", style="plain")
-    plt.show
 
     # display graph
-    st.pyplot(fig)
+    st.pyplot(plt)
+    st.write("Schools with the most no. of teachers are located in cities with an income level of 55M or more but less than P80 M.")
+    st.write("Schools with the lowest no. of teachers are located in cities with an income level P 80M or more but less than P 160 M.")
 
     #Getting the no. of rooms per city classified by income
     rooms_per_city_income = df_numeric.groupby("school.cityincome").agg(Rooms=("rooms_total", sum))
-    rooms_per_city_income
 
     #Plotting the bar graph for rooms per city classified by income
     plt.figure(figsize=(12,6), dpi=80)
     plt.barh(rooms_per_city_income.index, rooms_per_city_income["Rooms"].values)
     plt.title("Rooms")
     plt.ticklabel_format(axis="x", style="plain")
-    plt.show
 
     # display graph
-    st.pyplot(fig)
+    st.pyplot(plt)
+    st.write("Schools with the most no. of rooms are located in cities with an income level of P55 M or more but less than P80 M.")
+    st.write("Schools with the lowest no. of rooms are located in cities an income level of P 80M or more but less than P 160 M.")
 
     #Getting the total MOOE per city classified by income
     mooe_per_city_income = df_numeric.groupby("school.cityincome").agg(MOOE_per_city_income=(" school.mooe ",sum))
-    mooe_per_city_income
 
     #Plotting the bar graph for total MOOE per city classified by income
     plt.figure(figsize=(12,6), dpi = 80)
     plt.barh(mooe_per_city_income.index, mooe_per_city_income ["MOOE_per_city_income"].values)
     plt.title("Total MOOE")
     plt.ticklabel_format(axis="x", style="plain")
-    plt.show
 
     # display graph
-    st.pyplot(fig)
+    st.pyplot(plt)
+    st.write("Schools with the highest MOOE are located in cities with an income level of 55M or more but less than P80 M.")
+    st.write("Schools with the lowest MOOE are located in cities with an income level of P 80M or more but less than P 160 M.")
+    st.markdown("---")
 
 
 def sampleStreamLit():

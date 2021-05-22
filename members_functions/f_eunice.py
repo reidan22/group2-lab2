@@ -220,15 +220,37 @@ Cluster 2 – highest resources allocated
     #plot to streamlit
     st.title("Distribution of Cluster according to City Income")
     st.pyplot(fig2)
-    st.text(""" For all clusters
+    st.write(""" For all clusters
 The highest proportion of schools belongs to the P45-55 M income class
 The proportion of schools in lower income municipalities are greater compared to higher income municipalities
 
 """)
     
-    st.text(""" Proportion of schools in lower income municipalities slightly decreases from Cluster 0 to Cluster 2
+    st.text(""" Proportion of schools in lower income municipalities 
+    slightly decreases from Cluster 0 to Cluster 2
  """)
-    st.text(""" Proportion of schools in higher income municipalities slightly increases from Cluster 0 to Cluster 2""")
+    st.text(""" Proportion of schools in higher income municipalities 
+    slightly increases from Cluster 0 to Cluster 2""")
+
+    st.markdown("---")
+    st.header("Conclusions")
+ 
+    st.markdown(""" 
+    - The income level of a city/municipality where a school is located affects the distribution of resources among public schools
+    - Schools in low income cities/municipalities have low resources
+    - Schools in high income cities/municipalities have high resources
+    - The Boncodin formula is not an equitable method to allocate resources
+    """)
+    st.markdown("---")
+    st.header("Recommendations")
+    st.markdown(""" 
+    - Further study
+        - investigate other variables for a more equitable distribution of MOOE
+            - income level/poverty level
+            - population
+        - investigate further the relationship between a school’s resources and the income level of a school’s city/municipality
+    """)
+    st.markdown("---")
 
 def sampleStreamLit():
     st.title("This is Eunice's Streamlit page")

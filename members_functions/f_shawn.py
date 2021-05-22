@@ -6,7 +6,10 @@ import streamlit as st
 
 def mainShawn():
     testShawn()
+    st.markdown("---")
+    st.header("Methodology")
     st.image("./assets/Methodology.png")
+    st.markdown("---")
     #sampleStreamLit()
 
 
